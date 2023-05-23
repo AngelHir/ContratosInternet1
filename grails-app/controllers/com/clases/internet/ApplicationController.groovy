@@ -1,4 +1,4 @@
-package contratosinternet
+package com.clases.internet
 
 import grails.core.GrailsApplication
 import grails.plugins.*

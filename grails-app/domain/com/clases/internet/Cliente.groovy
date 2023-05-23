@@ -1,8 +1,9 @@
-package Cliente
+package com.clases.internet
+
 
 class Cliente {
 
-    static hasOne = [direccion:Direccion]
+    static hasOne = [direccion: Direccion]
 
     boolean activo = true
 

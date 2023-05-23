@@ -63,6 +63,8 @@ dependencies {
     testCompile "org.mockito:mockito-core"
     testCompile "io.micronaut:micronaut-http-client"
     testCompile "org.grails:grails-web-testing-support"
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
+
 }
 
 bootRun {

@@ -1,14 +1,18 @@
-package Contrato
+package com.clases.internet
 
-import Cliente.Cliente
+
 
 class Contrato {
 
     boolean activo = true
 
-    Cliente cliente
+    Cliente nombre
+
+    Cliente apellido
 
     Plan plan
+
+    Direccion direccion
 
 
     static constraints = {

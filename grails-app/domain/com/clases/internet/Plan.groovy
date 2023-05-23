@@ -1,4 +1,4 @@
-package Contrato
+package com.clases.internet
 
 class Plan {
 
@@ -9,6 +9,7 @@ class Plan {
     int numMegas
 
     double precioPaquete
+
 
 
 

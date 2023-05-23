@@ -1,18 +1,15 @@
-package Cliente
+package com.clases.internet
 
 class Direccion {
 
-    static belongsTo = [cliente:Cliente]
+
+    boolean activo = true
 
     String calle
 
     String colonia
 
     String estado
-
-    int numInterior
-
-    int numExterior
 
     String codigoPostal
 
