@@ -9,6 +9,13 @@ class DireccionService {
         return Direccion.get(id)
     }
 
+    def search(Map contratoMap){
+        println "contratoMap:${contratoMap}"
+        return Direccion.createCriteria().list(contratoMap) {
+            order ("id", "desc")
+        }
+    }
+
     def obtenerCalle(){
 
         return Direccion.findAllByActivo(true).collect{[id:it.id, calle:it.calle]}
@@ -51,6 +58,8 @@ class DireccionService {
             contratoInstance.calle = contratoMap.calle
             contratoInstance.colonia = contratoMap.colonia
             contratoInstance.estado = contratoMap.estado
+            contratoInstance.numExterior = contratoMap.numExterior as int
+            contratoInstance.numInterior = contratoMap.numExterior as int
             contratoInstance.codigoPostal=contratoMap.codigoPostal
             return this.save(contratoInstance)
         } catch (e) {

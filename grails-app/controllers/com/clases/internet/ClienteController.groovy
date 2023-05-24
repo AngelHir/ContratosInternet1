@@ -22,10 +22,10 @@ class ClienteController {
                     success: true, total: clienteList.totalCount,
                     data: clienteList.collect {[
                             id: it.id,
-                            modelo: it.catalogoModelo.modelo,
-                            fabricante: it.catalogoFabricante.fabricante,
-                            talla: it.catalogoTalla.talla,
-                            color: it.catalogoColor.color
+                            nombre: it.cliente.nombre,
+                            apellido: it.cliente.apellido,
+                            email: it.cliente.email,
+                            telefono: it.cliente.telefono
                     ]}
             ]
             respond result
@@ -52,18 +52,6 @@ class ClienteController {
     }
 
 
-    def update () {
-
-        try {
-            render clienteService.update(JSON.parse(request) as Map) as JSON
-            Map result = [success: true]
-            respond result
-
-        } catch (Exception e) {
-            Map error = [error: e.getMessage()]
-            render error as JSON
-        }
-    }
 
     def delete(long id){
 

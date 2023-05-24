@@ -11,29 +11,11 @@ class ContratoController {
 
 
     def show(Long id) {
-        respond ContratoService.get(id)
+        respond contratoService.get(id)
     }
 
-    def search() {
-        try {
-            def contratoList = contratoService.search(JSON.parse(request) as Map)
-            Map result = [
-                    success: true, total: contratoList.totalCount,
-                    data: contratoList.collect {[
-                            id: it.id,
-                            cliente: it.cliente.nombre&&it.cliente.apellido,
-                            paquete: it.plan.nombrePaquete,
-                            precio: it.plan.precio,
-                            direccion: it.direccion.calle&&it.direccion.colonia&&it.direccion.estado
-                    ]}
-            ]
-            respond result
 
-        } catch (Exception e) {
-            Map error = [error: e.getMessage()]
-            render error as JSON
-        }
-    }
+    //Pendiente el search
 
     def save() {
         try {
@@ -51,18 +33,7 @@ class ContratoController {
     }
 
 
-    def update () {
 
-        try {
-            render contratoService.update(JSON.parse(request) as Map) as JSON
-            Map result = [success: true]
-            respond result
-
-        } catch (Exception e) {
-            Map error = [error: e.getMessage()]
-            render error as JSON
-        }
-    }
 
     def delete(long id){
 

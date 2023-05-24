@@ -10,6 +10,9 @@ class ContratoService {
     DireccionService direccionService
     PlanService planService
 
+    Contrato get(long id) {
+        return Contrato.get(id)
+    }
 
 
     def search(Map contratoMap){

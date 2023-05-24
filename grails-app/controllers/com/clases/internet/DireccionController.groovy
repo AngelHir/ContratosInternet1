@@ -10,6 +10,27 @@ class DireccionController {
     static responseFormats = ['json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def search() {
+        try {
+            def direccionList = direccionService.search(JSON.parse(request) as Map)
+            Map result = [
+                    success: true, total: direccionList.totalCount,
+                    data: direccionList.collect {[
+                            id: it.id,
+                            nombre: it.cliente.nombre,
+                            apellido: it.cliente.apellido,
+                            email: it.cliente.email,
+                            telefono: it.cliente.telefono
+                    ]}
+            ]
+            respond result
+
+        } catch (Exception e) {
+            Map error = [error: e.getMessage()]
+            render error as JSON
+        }
+    }
+
 
     def obtenerCalle(){
         def calleslist= direccionService.obtenerCalle()

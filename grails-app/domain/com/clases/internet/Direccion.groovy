@@ -11,6 +11,10 @@ class Direccion {
 
     String estado
 
+    int numInterior
+
+    int numExterior
+
     String codigoPostal
 
     static constraints = {

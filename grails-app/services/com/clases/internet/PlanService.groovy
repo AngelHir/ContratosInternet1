@@ -9,6 +9,13 @@ class PlanService {
         return Plan.get(id)
     }
 
+    def search(Map contratoMap){
+        println "catalogoMap:${contratoMap}"
+        return Plan.createCriteria().list(contratoMap) {
+            order ("id", "desc")
+        }
+    }
+
     def obtenerPrecio(){
 
         return Plan.findAllByActivo(true).collect{[id:it.id, precio:it.precioPaquete]}
