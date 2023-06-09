@@ -15,7 +15,29 @@ class ContratoController {
     }
 
 
-    //Pendiente el search
+    def search() {
+        try {
+            def contratoList = contratoService.search(JSON.parse(request) as Map)
+            Map result = [
+                    success: true, total: contratoList.totalCount,
+                    data: contratoList.collect {[
+                            id: it.id,
+                            nombre: it.nombre.nombre,
+                            apellido: it.apellido.apellido,
+                            email: it.email.email,
+                            telefono: it.telefono.telefono,
+                            paquete:it.paquete.paquete,
+                            megas: it.megas.megas,
+                            precio: it.precio.precio,
+                    ]}
+            ]
+            respond result
+
+        } catch (Exception e) {
+            Map error = [error: e.getMessage()]
+            render error as JSON
+        }
+    }
 
     def save() {
         try {

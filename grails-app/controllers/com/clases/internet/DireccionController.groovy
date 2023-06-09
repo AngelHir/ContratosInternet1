@@ -17,10 +17,10 @@ class DireccionController {
                     success: true, total: direccionList.totalCount,
                     data: direccionList.collect {[
                             id: it.id,
-                            nombre: it.cliente.nombre,
-                            apellido: it.cliente.apellido,
-                            email: it.cliente.email,
-                            telefono: it.cliente.telefono
+                            calle: it.direccion.calle,
+                            colonia: it.direccion.colonia,
+                            estado: it.direccion.estado,
+                            codigoPostal: it.direccion.codigoPostal
                     ]}
             ]
             respond result

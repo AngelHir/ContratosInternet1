@@ -36,6 +36,12 @@ class ClienteController {
         }
     }
 
+    def obtenerNombres(){
+        def nombreslist= clienteService.obtenerNombres()
+        respond(nombreslist)
+    }
+
+
     def save() {
         try {
             def jsonObj = JSON.parse(request)

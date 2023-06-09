@@ -10,9 +10,16 @@ class Contrato {
 
     Cliente apellido
 
-    Plan plan
+    Cliente telefono
 
-    Direccion direccion
+    Cliente email
+
+    Plan paquete
+
+    Plan megas
+
+    Plan precio
+
 
 
     static constraints = {

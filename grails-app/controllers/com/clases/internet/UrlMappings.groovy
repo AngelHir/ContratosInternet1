@@ -14,11 +14,14 @@ class UrlMappings {
         "500"(view: '/error')
         "404"(view: '/notFound')
 
-        post '/calzado/save' (controller: 'calzado', action: 'save')
-        get '/catalogoColor/obtenerColores' (controller: 'catalogoColor', action: 'obtenerColores')
-        get '/catalogoFabricante/obtenerFabricantes' (controller: 'catalogoFabricante', action: 'obtenerFabricantes')
-        get '/catalogoTalla/obtenerTallas' (controller: 'catalogoTalla', action: 'obtenerTallas')
-        get '/catalogoModelo/obtenerModelos' (controller: 'catalogoModelo', action: 'obtenerModelos')
-        post "/calzado/search"(controller:"calzado", action: "search")
+        post '/contrato/save' (controller: 'contrato', action: 'save')
+        post '/cliente/save' (controller: 'cliente', action: 'save')
+        post '/direccion/save' (controller: 'direccion', action: 'save')
+        post '/plan/save' (controller: 'plan', action: 'save')
+        post "/contrato/search"(controller:"contrato", action: "search")
+        post "/cliente/search"(controller:"cliente", action: "search")
+        get '/cliente/obtenerNombres' (controller: 'cliente', action: 'obtenerNombres')
+
+
     }
 }

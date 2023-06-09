@@ -17,6 +17,12 @@ class ClienteService {
         }
     }
 
+    def obtenerNombres(){
+
+        return Cliente.findAllByActivo(true).collect{[id:it.id, nombre:it.nombre, apellido: it.apellido]}
+
+    }
+
 
     def save(Cliente contratoInstance) throws Exception {
         if (contratoInstance && contratoInstance.validate()) {
