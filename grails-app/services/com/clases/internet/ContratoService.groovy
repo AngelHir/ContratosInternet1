@@ -3,17 +3,23 @@ package com.clases.internet
 import grails.gorm.transactions.Transactional
 import org.hibernate.sql.JoinType
 
+// Servicio de contrato, aqui van las funciones que realizan la logica que utilizan los controladores
+
 @Transactional
 class ContratoService {
 
+    // Servicios utilizados por el servicio de contrato
     ClienteService clienteService
     DireccionService direccionService
     PlanService planService
+
+    //Funcion que recibe un id y retorna el registro con dicho id
 
     Contrato get(long id) {
         return Contrato.get(id)
     }
 
+    //Funcion que mediante una consulta usando criteria crea una lista de contratos ordenados por id
 
     def search(Map contratoMap){
         println "calzadoMap:${contratoMap}"
@@ -22,6 +28,7 @@ class ContratoService {
         }
     }
 
+    // Funcion que guarda una instancia de tipo contrato
 
     def save(Contrato contratoInstance) throws Exception {
         if (contratoInstance && contratoInstance.validate()) {
@@ -31,6 +38,7 @@ class ContratoService {
         throw new Exception("Errores :${contratoInstance.errors}")
     }
 
+// Funcion que genera una instancia de tipo Contrato
 
     def create(Map contratoMap) {
         try {

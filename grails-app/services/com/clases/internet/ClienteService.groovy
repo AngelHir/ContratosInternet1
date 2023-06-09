@@ -2,28 +2,34 @@ package com.clases.internet
 
 import grails.gorm.transactions.Transactional
 
-
+// Servicio de cliente, aqui van las funciones que realizan la logica que utilizan los controladores
 @Transactional
 class ClienteService {
 
-    Cliente  get(long id) {
+    //Funcion que recibe un id y retorna el registro con dicho id
+    Cliente get(long id) {
         return Cliente.get(id)
     }
 
-    def search(Map contratoMap){
+    //Funcion que mediante una consulta usando criteria crea una lista de clientes ordenados por id
+    def search(Map contratoMap) {
         println "contratoMap:${contratoMap}"
         return Cliente.createCriteria().list(contratoMap) {
-            order ("id", "asc")
+            order("id", "asc")
         }
     }
 
-    def obtenerNombres(){
+    // Funcion que retorna nombres de clientes que esten activos
+    def obtenerNombres() {
 
-        return Cliente.findAllByActivo(true).collect{[id:it.id, nombre:it.nombre, apellido: it.apellido]}
+        return Cliente.findAllByActivo(true).collect {
+            [id: it.id, nombre: it.nombre, apellido: it.apellido]
+        }
 
     }
 
 
+    // Funcion que guarda una instancia de tipo cliente
     def save(Cliente contratoInstance) throws Exception {
         if (contratoInstance && contratoInstance.validate()) {
             contratoInstance.save(flush: true)
@@ -32,7 +38,7 @@ class ClienteService {
         throw new Exception("Errores :${contratoInstance.errors}")
     }
 
-
+// Funcion que genera una instancia de tipo cliente
     def create(Map contratoMap) {
         try {
             Cliente contratoInstance
@@ -50,7 +56,7 @@ class ClienteService {
     }
 
 
-
+// Funcion que cambia el estado de activo de un cliente
     def delete(long id){
         try {
             Cliente contratoInstance = this.get(id)

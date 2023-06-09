@@ -2,6 +2,8 @@ package com.clases.internet
 
 class UrlMappings {
 
+    //Aqui se crea la url que se usara para los controladores
+
     static mappings = {
         delete "/$controller/$id(.$format)?"(action:"delete")
         get "/$controller(.$format)?"(action:"index")
